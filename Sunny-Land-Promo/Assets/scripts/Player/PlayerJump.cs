@@ -24,13 +24,9 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _canJump == true)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpVelocity);
-            _animator.SetBool("isJumping", true);
+            _animator.SetTrigger("isJumping");
         }
-        else if (!_canJump)
-        {
-            _animator.SetBool("isJumping", false);
-        }
-        Debug.Log("player can jump " + _canJump);
+
         Debug.DrawLine(this.transform.position, _endLineCast.transform.position, Color.red);
     }
 
