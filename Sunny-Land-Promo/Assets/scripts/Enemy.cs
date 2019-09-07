@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_player.GetComponent<Rigidbody2D>().velocity.y < -0.001f)
+        if (_player.GetComponent<Rigidbody2D>().velocity.y < -0.001f && other.gameObject.CompareTag("Player"))
         {
             // this.gameObject.SetActive(false);
             _animator.SetTrigger("dies");
