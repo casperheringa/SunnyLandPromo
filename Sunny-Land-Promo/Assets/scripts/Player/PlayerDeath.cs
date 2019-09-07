@@ -7,12 +7,15 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField]
     private GameObject _playerDiedText;
     private Animator _animator;
+    private Rigidbody2D _rigidbody;
 
-    private bool _isPlayerAlive = true;
+    public bool _isPlayerAlive = true;
 
     private void Start()
     {
         _animator = this.GetComponent<Animator>();
+        _rigidbody = this.GetComponent<Rigidbody2D>();
+
         _playerDiedText.SetActive(false);
         _isPlayerAlive = true;
     }
@@ -21,18 +24,22 @@ public class PlayerDeath : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            if (GetComponent<Rigidbody2D>().velocity.y > -0.001f)
+            {
+                PlayerDies();
+            }
+        }
+        if (other.gameObject.CompareTag("Kill Barier"))
+        {
             PlayerDies();
         }
     }
 
     private void PlayerDies()
     {
-        Debug.Log("Killed by enemy");
         _playerDiedText.SetActive(true);
-
         _animator.SetTrigger("isHurt");
         _isPlayerAlive = false;
-
     }
 
 }
