@@ -9,12 +9,13 @@ public class ScoreItem : MonoBehaviour
     private Animator _animator;
 
     //Het script die de score bijhoud
-    [SerializeField]
     private ScoreKeeper _scoreKeeper;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        //vind het object met de tag "GameManager" en het script ScoreKeeper
+        _scoreKeeper = GameObject.FindWithTag("GameManager").GetComponent<ScoreKeeper>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
