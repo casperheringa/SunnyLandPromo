@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class WinCondition : MonoBehaviour
 {
+    //het EnergySwitch script
     private EnergySwitch _energySwitch;
-    public bool _isWinning;
+    //het UI script
+    [SerializeField]
+    private UI _uI;
+    //het ScoreKeeper script
+    [SerializeField]
+    private ScoreKeeper _scoreKeeper;
+
+    //deze houd bij of de speler kan winnen
+    public bool IsWinning;
 
     void Start()
     {
         _energySwitch = GetComponent<EnergySwitch>();
     }
 
-    void Update()
-    {
-        _isWinning = _energySwitch._isSwitchOn;
-    }
-
+    //Als de speler collide met het de deur van het huisje (waar dit script op zit)
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(_isWinning);
-            if (_isWinning)
+            //en de speler is aan het winnen
+            if (IsWinning)
             {
-                Debug.Log("Won!");
+                //gaat het end scherm aan via het UI script
+                _uI.EndScreen();
+                //zegt dat de score in het eind scherm moet worden geupdate
+                _scoreKeeper.ChangeTextEndScore();
+                //en zet de speler op inactief
                 other.gameObject.SetActive(false);
             }
         }

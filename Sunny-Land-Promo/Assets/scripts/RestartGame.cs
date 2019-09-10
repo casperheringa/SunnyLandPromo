@@ -6,12 +6,12 @@ using UnityEngine;
 public class RestartGame : MonoBehaviour
 {
 
-    //This is for restarting the level when you press R
+    //als je op R drukt dat restart de scene
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //Reloading the scene
+            //herladen van scene 0
             SceneManager.LoadScene(0);
         }
     }

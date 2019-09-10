@@ -15,7 +15,8 @@ public class PlayerCrouch : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
+        //als je op linker shift drukt wodr de animatie uitgeoerd en als je hem los laat stopt hij
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _animator.SetBool("isCrouching", true);
         }

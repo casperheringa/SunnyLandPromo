@@ -9,6 +9,8 @@ TagManager:
   - Kill Barier
   - Cherry
   - Gem
+  - Spikes
+  - Ladder
   layers:
   - Default
   - TransparentFX
