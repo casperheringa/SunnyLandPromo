@@ -35,6 +35,11 @@ public class PlayerRunning : MonoBehaviour
     {
         //hier krijg je van het PlayerDeath script binnen of de speler nog leeft
         _playerAlive = _playerDeath._isPlayerAlive;
+        PlayerMove();
+    }
+
+    private void PlayerMove()
+    {
         //als de speler nog leeft
         if (_playerAlive)
         {
@@ -62,7 +67,6 @@ public class PlayerRunning : MonoBehaviour
                 _animator.SetBool("isRunning", false);
             }
         }
-
     }
 
 }

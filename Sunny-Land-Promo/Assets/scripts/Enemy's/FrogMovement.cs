@@ -14,7 +14,9 @@ public class FrogMovement : MonoBehaviour
     //Dit houdt bij of de kikker naar rechts gaat of niet
     private bool _goingRight = true;
 
-    //Deze 3 variablelen zijn om de baan aan te geven voor waar de kikker moet bewegen
+    //Deze 3 GameObjects zijn om de baan aan te geven voor waar de kikker moet bewegen
+    //Dit is dus een kleine tool waar je mee kan spelen voor de movement van de kikker te veranderen
+    //Deze objecten kan je vinden in het GameObject "Frog lerp positions"
     [SerializeField]
     private GameObject _begin;
     [SerializeField]
@@ -50,15 +52,20 @@ public class FrogMovement : MonoBehaviour
 
     void Update()
     {
-        //dit is voor de spring counter
-        if (_readyToMoveTime < Time.time)
-        {
-            _myCounter += _countDown ? -Time.deltaTime : Time.deltaTime;
-            //dit is voor de goeie animaties aan te zetten
-            _animator.SetTrigger("jump");
-            _animator.SetBool("didJump", true);
-        }
+        JumpCounter();
+        JumpDelayCounter();
 
+        //dit zorgt ervoor dat de var _myCounter niet onder de 0 kan komen en ook niet boven de 1.
+        _myCounter = Mathf.Clamp(_myCounter, 0f, 1f);
+        //hier maak je de waarden van hoever het springen in het procces is naar de waarden van de timer.
+        _time = _myCounter;
+
+        //dit is wat er voor zorgd dat de kikker tussen de begin, middel en eind positie beweegd.
+        transform.position = Vector2.Lerp(Vector2.Lerp(_begin.transform.position, _middle.transform.position, _time), Vector2.Lerp(_middle.transform.position, _end.transform.position, _time), _time);
+    }
+
+    private void JumpDelayCounter()
+    {
         //dit is de counter voor de vertraging tussen de sprongen in
         if (_myCounter > 1f)
         {
@@ -78,13 +85,20 @@ public class FrogMovement : MonoBehaviour
             _spriteRenderer.flipX = true;
 
         }
-        //dit zorgt ervoor dat de var _myCounter niet onder de 0 kan komen en ook niet boven de 1.
-        _myCounter = Mathf.Clamp(_myCounter, 0f, 1f);
-        //hier maak je de waarden van hoever het springen in het procces is naar de waarden van de timer.
-        _time = _myCounter;
-
-        //dit is wat er voor zorgd dat de kikker tussen de begin, middel en eind positie beweegd.
-        transform.position = Vector2.Lerp(Vector2.Lerp(_begin.transform.position, _middle.transform.position, _time), Vector2.Lerp(_middle.transform.position, _end.transform.position, _time), _time);
     }
+
+    private void JumpCounter()
+    {
+        //dit is voor de spring counter
+        if (_readyToMoveTime < Time.time)
+        {
+            _myCounter += _countDown ? -Time.deltaTime : Time.deltaTime;
+            //dit is voor de goeie animaties aan te zetten
+            _animator.SetTrigger("jump");
+            _animator.SetBool("didJump", true);
+        }
+    }
+
+
 
 }

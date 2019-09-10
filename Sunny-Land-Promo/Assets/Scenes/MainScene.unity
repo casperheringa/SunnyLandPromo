@@ -82935,7 +82935,7 @@ GameObject:
   - component: {fileID: 307865887}
   m_Layer: 0
   m_Name: Game manager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83524,6 +83524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerDiedText: {fileID: 2067896221}
+  _playerLives: 2
   _playerLivesText: {fileID: 1756891471}
   _isPlayerAlive: 1
 --- !u!114 &440678097
@@ -83557,9 +83558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _distance: 3
-  pos1: {x: 9, y: 0}
-  pos2: {x: 1, y: 0}
+  _pos1: {x: 9.67, y: 0}
+  _pos2: {x: 1.12, y: 0}
 --- !u!114 &444787514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86228,9 +86228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2.5
-  _distance: 5
-  pos1: {x: 7, y: 0}
-  pos2: {x: -4, y: 0}
+  _pos1: {x: 10.37, y: 0}
+  _pos2: {x: -4, y: 0}
 --- !u!1 &919938485
 GameObject:
   m_ObjectHideFlags: 0
@@ -106137,7 +106136,7 @@ PrefabInstance:
     - target: {fileID: 4244350167691341801, guid: 37ed0bf00bda04e47b97ddec75b40647,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.85
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 4244350167691341801, guid: 37ed0bf00bda04e47b97ddec75b40647,
         type: 3}
@@ -106213,6 +106212,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 230232289648461393, guid: 37ed0bf00bda04e47b97ddec75b40647,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37ed0bf00bda04e47b97ddec75b40647, type: 3}

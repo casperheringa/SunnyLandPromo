@@ -22,6 +22,11 @@ public class PlayerClimbing : MonoBehaviour
 
     void LateUpdate()
     {
+        Climbing();
+    }
+
+    private void Climbing()
+    {
         //dit wordt uigevoerd waneer de speler aan het klimmen is
         if (_isClimbing)
         {
@@ -48,7 +53,6 @@ public class PlayerClimbing : MonoBehaviour
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             }
         }
-
     }
 
     //dit wordt uitgevoert op het moment dat de speler collider in een andere collider komt

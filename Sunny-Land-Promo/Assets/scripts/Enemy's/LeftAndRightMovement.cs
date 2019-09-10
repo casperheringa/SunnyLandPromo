@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LeftAndRightMovement : MonoBehaviour
 {
+    //Dit script wordt gebruikt om bepaalde enemy's naar links en naar rechts te bewegen
+
     //dit is de snelheid waarmee dit object beweegd
     [SerializeField]
     private float _speed = 1.6f;
@@ -12,6 +14,8 @@ public class LeftAndRightMovement : MonoBehaviour
 
 
     //Dit zijn de posities waar dit object tussen beweegd
+    //Deze waardes kan je in je editor aanpassen om daar nog mee te spelen en te tweaken
+    //Alleen de x waardes worden gebruikt dus de y waardes hoef je niet te gebruiken
     [SerializeField]
     private Vector2 _pos1;
     [SerializeField]

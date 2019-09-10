@@ -11,6 +11,7 @@ TagManager:
   - Gem
   - Spikes
   - Ladder
+  - GameManager
   layers:
   - Default
   - TransparentFX
